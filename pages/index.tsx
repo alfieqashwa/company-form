@@ -1,12 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { prisma, Company } from 'src/prisma';
 import Card from 'src/components/CompanyCard';
 import CompanyForm from 'src/components/CompanyFrom';
 import OfficeForm from 'src/OfficeForm';
 
-import { companies, ICompany } from 'data/companies';
+// import { companies, ICompany } from 'data/companies';
+import { GetServerSideProps } from 'next';
 
-export default function Home() {
+export default function Home({ companies }: { companies: Company[] }) {
   return (
     <>
       <Head>
@@ -23,15 +25,22 @@ export default function Home() {
         <section className=''>
           <h1 className='my-4 text-3xl text-gray-600'>Companies</h1>
           <Link href='/offices/id'>Temporary Link</Link>
-          <div className='grid grid-cols-2 gap-8'>
-            {companies.map((company) => (
-              <ul>
-                <Card key={company.id} company={company} />
-              </ul>
+          <ul className='grid grid-cols-2 gap-8'>
+            {companies?.map((company) => (
+              <li key={company.id}>
+                <Card company={company} />
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </main>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const companies: Company[] = await prisma.company.findMany();
+  return {
+    props: { companies },
+  };
+};

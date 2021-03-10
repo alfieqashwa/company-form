@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import Card from 'src/components/OfficeCard';
-import CompanyForm from 'src/components/CompanyFrom';
-import OfficeForm from 'src/OfficeForm';
 
 import { offices, IOffice } from 'data/offices';
 import Link from 'next/link';
@@ -38,11 +36,13 @@ export default function Office() {
         <section className=''>
           <h1 className='my-4 text-3xl text-gray-600'>Offices</h1>
           <div className='grid grid-cols-2 gap-8'>
-            {offices.map((office) => (
-              <ul>
-                <Card key={office.id} office={office} />
-              </ul>
-            ))}
+            <ul>
+              {offices.map((office) => (
+                <li key={office.id}>
+                  <Card office={office} />
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
