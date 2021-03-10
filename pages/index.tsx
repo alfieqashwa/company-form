@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Card from 'src/components/CompanyCard';
 import CompanyForm from 'src/components/CompanyFrom';
 import OfficeForm from 'src/OfficeForm';
@@ -21,6 +22,7 @@ export default function Home() {
         </section>
         <section className=''>
           <h1 className='my-4 text-3xl text-gray-600'>Companies</h1>
+          <Link href='/offices/id'>Temporary Link</Link>
           <div className='grid grid-cols-2 gap-8'>
             {companies.map((company) => (
               <ul>
