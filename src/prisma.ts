@@ -1,4 +1,4 @@
-import { PrismaClient, Company, Office } from "@prisma/client";
+import { PrismaClient, Prisma, Company, Office } from "@prisma/client";
 
 const prisma = new PrismaClient({
   // log: process.env.NODE_ENV === "development" ? ["query", "info", "warn"] : []
@@ -6,4 +6,4 @@ const prisma = new PrismaClient({
 })
 
 export { prisma, PrismaClient };
-export type { Company, Office };
+export type { Company, Office, Prisma };
