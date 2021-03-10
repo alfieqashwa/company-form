@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Card from 'src/components/Card';
+import Card from 'src/components/CompanyCard';
 import CompanyForm from 'src/components/CompanyFrom';
 import OfficeForm from 'src/OfficeForm';
 
@@ -21,7 +21,7 @@ export default function Home() {
         </section>
         <section className=''>
           <h1 className='my-4 text-3xl text-gray-600'>Companies</h1>
-          <div className='grid grid-cols-2 border-2 border-gray-300'>
+          <div className='grid grid-cols-2 gap-8'>
             {companies.map((company) => (
               <ul>
                 <Card key={company.id} company={company} />
