@@ -1,7 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { NextApiRequest, NextApiResponse } from 'next'
-import { Company, prisma, Prisma } from 'src/prisma'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient, Prisma, Company } from '@prisma/client'
+
+const prisma = new PrismaClient();
 
 interface IMessage { message: string }
 

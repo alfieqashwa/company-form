@@ -1,7 +1,4 @@
-import { ICompany } from 'data/companies';
-
-export default function Card({ company }: { company: ICompany }) {
-  // TODO:
+export function CompanyCard({ company }) {
   return (
     <div className='px-2 pt-1 pb-3 mt-2 text-gray-500 border-2 border-gray-300 rounded-md'>
       <div className='flex justify-between pb-1 border-b border-gray-300'>

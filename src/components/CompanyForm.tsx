@@ -1,16 +1,20 @@
+import { Company } from '@prisma/client';
 import { useForm } from 'react-hook-form';
+// import { areaNumber, ICode } from 'data/countriesDialCode';
 
 const FormError = ({ errorMessage }: { errorMessage: string }) => {
   return <p className='mt-1 ml-2 text-xs text-red-400'>{errorMessage}</p>;
 };
+
 interface AddCompanyFormProps {
-  onSubmit: any;
+  onSubmit: Company | any;
 }
 
-export default function CompanyForm(props: AddCompanyFormProps) {
+export default function CompanyForm({ onSubmit }: AddCompanyFormProps) {
   const { register, handleSubmit, errors } = useForm();
+
   return (
-    <form className='mr-10' onSubmit={handleSubmit(props.onSubmit)}>
+    <form className='mr-10' onSubmit={handleSubmit(onSubmit)}>
       <h1 className='text-2xl text-gray-600'>Create Company</h1>
       <div className='py-2 space-y-2'>
         <div>
@@ -19,8 +23,8 @@ export default function CompanyForm(props: AddCompanyFormProps) {
           </label>
           <input
             className='w-full px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none'
-            type='text'
             name='name'
+            type='text'
             placeholder='name'
             ref={register({ required: true })}
           />
@@ -32,8 +36,8 @@ export default function CompanyForm(props: AddCompanyFormProps) {
           </label>
           <input
             className='w-full px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none'
-            type='text'
             name='address'
+            type='text'
             placeholder='address'
             ref={register({ required: true })}
           />
@@ -45,8 +49,8 @@ export default function CompanyForm(props: AddCompanyFormProps) {
           </label>
           <input
             className='w-full px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none'
-            type='text'
             name='revenue'
+            type='number'
             placeholder='revenue'
             ref={register({ required: true })}
           />
@@ -58,15 +62,24 @@ export default function CompanyForm(props: AddCompanyFormProps) {
           </label>
           <div className='flex space-x-2'>
             <input
-              className='w-1/6 px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none '
-              type='text'
+              className='w-2/6 px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none '
               name='code'
+              type='text'
               placeholder='code'
               ref={register({ required: true })}
             />
+            {/* <select
+              className='w-2/6 px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none '
+              name='code'
+              placeholder='code'
+              ref={register({ required: true })}>
+              {areaNumber.map((area: ICode) => (
+                <option value={area.dial_code}>{area.dial_code}</option>
+              ))}
+            </select> */}
             <input
               className='w-5/6 px-2 text-gray-700 placeholder-gray-300 border-2 border-gray-300 rounded-md outline-none'
-              type='text'
+              type='number'
               name='phone'
               placeholder='number'
               ref={register({ required: true })}
@@ -79,7 +92,7 @@ export default function CompanyForm(props: AddCompanyFormProps) {
         </div>
       </div>
       <button
-        className='w-full py-2 my-4 text-lg text-center text-gray-700 bg-gray-300 rounded-lg'
+        className='w-full py-2 my-4 text-lg text-center text-gray-700 bg-gray-300 rounded-lg focus:outline-none'
         type='submit'>
         Create
       </button>

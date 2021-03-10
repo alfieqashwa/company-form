@@ -4,7 +4,7 @@ CREATE TABLE "companies" (
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "revenue" INTEGER NOT NULL,
-    "code" INTEGER NOT NULL,
+    "code" TEXT NOT NULL,
     "phone" INTEGER NOT NULL
 );
 
@@ -18,3 +18,6 @@ CREATE TABLE "offices" (
     "company_id" INTEGER,
     FOREIGN KEY ("company_id") REFERENCES "companies" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "companies.name_unique" ON "companies"("name");

@@ -17,7 +17,7 @@ model Company {
   name    String   @unique
   address String
   revenue Int
-  code    Int
+  code    String
   phone   Int
   offices Office[]
 
